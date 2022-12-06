@@ -1,10 +1,21 @@
-version: '3.7'
+version: "3.7"
 services:
+  selenium:
+    image: selenium/standalone-chrome-debug # debug version include VNC
+    ports:
+      - 4444:4444
+      - 5901:5900 # VNC ports. The 5900 is default VNC port
+  unit-test: # new service
+    build: # build new image
+      dockerfile: rspec.dockerfile #spesific dockerfile
+      context: . #current context
+    volumes: # mount existen volume to container
+      - $PWD:/app #current directorin to /app
+    command:
+      - --pattern # entrypoint option
+      - /app/spec/unit/*_spec.rb # entrypoint option test target
   website:
     build:
       context: .
     ports:
       - 80:80
-
-
-
