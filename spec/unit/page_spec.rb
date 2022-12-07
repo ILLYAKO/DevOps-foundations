@@ -11,11 +11,11 @@ Capybara.register_driver :selenium do |app|
     app,
     browser: :remote,
     url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
-    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
-      "chromeOptions" => {
+    capabilities: Selenium::WebDriver::Remote::Capabilities.chrome( # desired_capabilities was replaced by capabilities in new Capybara 4
+      "goog:chromeOptions" => {
         "args" => [
           '--no-default-browser-check',
-          '--disable-dev-shm-usage'
+          '--disable-dev-shm-usage',
         ]
       }
     )
@@ -23,7 +23,7 @@ Capybara.register_driver :selenium do |app|
 end
 Capybara.default_driver = :selenium
 
-describe "Example page render unit tests" do
+describe "Example page render unit tests," do
   it "Shows the Explore California logo" do
     visit('/')
     expect(page.has_selector? '.logo').to be true
