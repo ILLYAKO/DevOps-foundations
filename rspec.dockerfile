@@ -1,4 +1,3 @@
-
 # create from base ruby image
 FROM ruby:alpine 
 MAINTAINER Illy Korotun <illya.korotun@gmail.com>
