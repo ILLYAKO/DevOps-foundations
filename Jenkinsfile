@@ -10,8 +10,8 @@ pipeline {    //
     }
     stage('Run unit tests'){  // part of the CI
       steps {  // Run sh script
-        // sh "$PWD/scripts/unit_test.sh" // invoce the shell and run script
-        sh "scripts/unit_test.sh" // invoce the shell and run script
+        // sh "$PWD/scripts/unit_tests.sh" // invoce the shell and run script
+        sh "scripts/unit_tests.sh" // invoce the shell and run script
 
       }
     }
